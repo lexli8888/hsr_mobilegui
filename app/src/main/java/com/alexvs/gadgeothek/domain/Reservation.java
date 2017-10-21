@@ -1,4 +1,4 @@
-package com.alexvs.gadgeothek.Logik;
+package com.alexvs.gadgeothek.domain;
 
 /**
  * Created by Alexander on 21.10.2017.
