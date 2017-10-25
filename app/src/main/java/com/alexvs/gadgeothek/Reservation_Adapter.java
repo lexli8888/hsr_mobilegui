@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.alexvs.gadgeothek.Model.Reservation;
+import com.alexvs.gadgeothek.domain.Reservation;
 
 import java.util.ArrayList;
 
