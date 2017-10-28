@@ -1,5 +1,7 @@
 package com.alexvs.gadgeothek;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.view.View;
 
 public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
@@ -21,7 +24,6 @@ public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSel
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Loan"));
         tabLayout.addTab(tabLayout.newTab().setText("Reservation"));
@@ -74,4 +76,6 @@ public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSel
 
         }
     }
+
+
 }

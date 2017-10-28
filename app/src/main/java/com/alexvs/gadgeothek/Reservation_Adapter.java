@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.alexvs.gadgeothek.domain.Reservation;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -58,8 +59,9 @@ public class Reservation_Adapter extends RecyclerView.Adapter {
         }
 
         public void bindView(int position){
-            mTextViewId.setText(list.get(position).getReservationId());
-            mTextViewReservation.setText(list.get(position).getGadget().toString());
+            SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
+            mTextViewId.setText(dt1.format(list.get(position).getReservationDate()));
+            mTextViewReservation.setText(list.get(position).getGadget().getName());
 
         }
 
