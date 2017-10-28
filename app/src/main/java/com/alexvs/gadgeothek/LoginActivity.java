@@ -68,7 +68,15 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(String message) {
-
+                        switch (message) {
+                            case "user does not exist":
+                                System.out.println("user does not exist");
+                                break;
+                            case "incorrect password":
+                            default:
+                                System.out.println("incorrect password or something else");
+                                break;
+                        }
                     }
                 });
             }
