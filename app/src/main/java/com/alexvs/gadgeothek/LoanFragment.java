@@ -16,7 +16,6 @@ import com.alexvs.gadgeothek.domain.Loan;
 import com.alexvs.gadgeothek.service.Callback;
 import com.alexvs.gadgeothek.service.LibraryService;
 
-import java.util.Date;
 import java.util.List;
 
 
@@ -27,10 +26,6 @@ public class LoanFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
     }
 
 
@@ -42,49 +37,16 @@ public class LoanFragment extends Fragment implements View.OnClickListener {
         FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(this);
 
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.loanRecyclerView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.loanRecyclerView);
+        final LoanAdapter loanAdapter = new LoanAdapter();
 
-        LibraryService.login("pascal.bertschi@hsr.ch", "123456", new Callback<Boolean>() {
+        LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
             @Override
-            public void onCompletion(Boolean input) {
-                System.out.println("loggedin");
-
-                LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
-                    @Override
-                    public void onCompletion(List<Loan> input) {
-                        Loan_Adapter loanAdapter = new Loan_Adapter();
-                        for (Loan loan:input) {
-                            loanAdapter.insert(loan);
-                        }
-                        recyclerView.setAdapter(loanAdapter);
-                        LibraryService.getGadgets(new Callback<List<Gadget>>() {
-                            @Override
-                            public void onCompletion(List<Gadget> input) {
-                                /*LibraryService.reserveGadget(input.get(0), new Callback<Boolean>() {
-                                    @Override
-                                    public void onCompletion(Boolean input) {
-                                        System.out.println("Gadget" + input + "added");
-                                    }
-
-                                    @Override
-                                    public void onError(String message) {
-                                        System.out.println("You failed!");
-                                    }
-                                });*/
-                            }
-
-                            @Override
-                            public void onError(String message) {
-                                System.out.println("No Gadgets");
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onError(String message) {
-
-                    }
-                });
+            public void onCompletion(List<Loan> input) {
+                for (Loan loan:input) {
+                    loanAdapter.insert(loan);
+                }
+                loanAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -93,8 +55,7 @@ public class LoanFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-
-
+        recyclerView.setAdapter(loanAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         return view;

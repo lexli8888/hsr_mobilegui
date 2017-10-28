@@ -15,12 +15,12 @@ import java.util.ArrayList;
  * Created by Alexander on 22.10.2017.
  */
 
-public class Loan_Adapter extends RecyclerView.Adapter {
+public class LoanAdapter extends RecyclerView.Adapter {
 
     ArrayList<Loan> list = new ArrayList<Loan>();
 
 
-    public Loan_Adapter() {
+    public LoanAdapter() {
 
     }
 

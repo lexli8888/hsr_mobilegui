@@ -31,7 +31,7 @@ public class ReservationFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_reservation_list, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.reservationRecyclerView);
-        final Reservation_Adapter reservationAdapter = new Reservation_Adapter();
+        final ReservationAdapter reservationAdapter = new ReservationAdapter();
 
         LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
             @Override

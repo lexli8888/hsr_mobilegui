@@ -16,11 +16,11 @@ import java.util.ArrayList;
  * Created by Alexander on 25.10.2017.
  */
 
-public class Reservation_Adapter extends RecyclerView.Adapter {
+public class ReservationAdapter extends RecyclerView.Adapter {
 
     ArrayList<Reservation> list = new ArrayList<Reservation>();
 
-    public Reservation_Adapter(){
+    public ReservationAdapter(){
 
     };
 
