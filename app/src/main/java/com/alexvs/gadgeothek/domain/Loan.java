@@ -4,6 +4,7 @@ package com.alexvs.gadgeothek.domain;
  * Created by Alexander on 21.10.2017.
  */
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -14,11 +15,15 @@ public class Loan {
     private Date pickupDate, returnDate;
     private final static int DAYS_TO_RETURN = 7;
 
-    public Loan(String id, Gadget gadget, Date pickupDate, Date returnDate) {
+    public Loan(String id, Gadget gadget, Date pickupDate) {
         this.id = id;
         this.gadget = gadget;
         this.pickupDate = pickupDate;
-        this.returnDate = returnDate;
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime( pickupDate );
+        cal.add( Calendar.DATE, DAYS_TO_RETURN );
+        this.returnDate = cal.getTime();
     }
 
     public boolean isLent() {

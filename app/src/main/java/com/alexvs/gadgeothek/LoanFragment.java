@@ -19,7 +19,7 @@ import com.alexvs.gadgeothek.service.LibraryService;
 import java.util.List;
 
 
-public class LoanFragment extends Fragment implements View.OnClickListener {
+public class LoanFragment extends Fragment {
 
 
 
@@ -34,8 +34,6 @@ public class LoanFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_loan_list, container, false);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
-        floatingActionButton.setOnClickListener(this);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.loanRecyclerView);
         final LoanAdapter loanAdapter = new LoanAdapter();
@@ -62,17 +60,4 @@ public class LoanFragment extends Fragment implements View.OnClickListener {
 
     }
 
-
-    @Override
-    public void onClick(View v) {
-        switch (v.toString()){
-
-            case "floatingActionButton" :
-                Intent intent = new Intent(this.getContext(), AddGadgetActivity.class);
-                startActivity(intent);
-                break;
-            default: return;
-
-        }
-    }
 }

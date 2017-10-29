@@ -7,7 +7,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.alexvs.gadgeothek.domain.Loan;
 import com.alexvs.gadgeothek.domain.Reservation;
+import com.alexvs.gadgeothek.service.Callback;
+import com.alexvs.gadgeothek.service.LibraryService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,28 +58,40 @@ public class ReservationAdapter extends RecyclerView.Adapter {
             mTextViewReservation = (TextView) itemView.findViewById(R.id.reservation_content);
             mButtonDelete = (Button) itemView.findViewById(R.id.reservation_delete);
             mButtonDelete.setOnClickListener(this);
-            itemView.setOnClickListener(this);
         }
 
         public void bindView(int position){
             SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
             mTextViewId.setText(dt1.format(list.get(position).getReservationDate()));
             mTextViewReservation.setText(list.get(position).getGadget().getName());
+            mButtonDelete.setId(position);
 
         }
 
         @Override
         public void onClick(View v) {
-            if(v == mButtonDelete){
+            Reservation reservation = list.get(v.getId());
+            LibraryService.deleteReservation(reservation, new Callback<Boolean>() {
+                @Override
+                public void onCompletion(Boolean input) {
+                    System.out.println("Reservation deleted");
+                }
 
-            }
+                @Override
+                public void onError(String message) {
+                    System.out.println(message);
+                }
+            });
+            remove(reservation);
+
         }
     }
 
 
     // Insert a new item to the RecyclerView on a predefined position
     public void insert(Reservation reservation) {
-        list.add(reservation);
+
+            list.add(reservation);
 
     }
 

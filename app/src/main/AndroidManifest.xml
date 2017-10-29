@@ -28,8 +28,10 @@
             android:name=".TabActivity"
             android:label="@string/title_activity_tab"
             android:theme="@style/AppTheme.NoActionBar">
-
-
+        </activity>
+        <activity
+            android:name=".AddGadgetActivity"
+            android:label="Add new Gadget">
         </activity>
     </application>
 
