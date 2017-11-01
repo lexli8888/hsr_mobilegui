@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
 
-public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
+public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     private LoanFragment mLoanFragment;
     private ReservationFragment mReservationFragment;
@@ -22,11 +22,14 @@ public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton3);
+        floatingActionButton.setOnClickListener(this);
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Loan"));
         tabLayout.addTab(tabLayout.newTab().setText("Reservation"));
+        tabLayout.addTab(tabLayout.newTab());
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.addOnTabSelectedListener(this);
 
@@ -78,4 +81,9 @@ public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSel
     }
 
 
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        startActivity(intent);
+    }
 }

@@ -14,6 +14,7 @@ public class Loan {
     private Gadget gadget;
     private Date pickupDate, returnDate;
     private final static int DAYS_TO_RETURN = 7;
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yy");
 
     public Loan(String id, Gadget gadget, Date pickupDate) {
         this.id = id;
@@ -32,10 +33,19 @@ public class Loan {
 
     public Date getPickupDate() {
         return pickupDate;
+
     }
 
     public Date getReturnDate() {
         return returnDate;
+    }
+
+    public String ReturnDate(){
+        return simpleDateFormat.format(returnDate);
+    }
+
+    public String PickupDate(){
+        return simpleDateFormat.format(pickupDate);
     }
 
     public String getLoanId() {

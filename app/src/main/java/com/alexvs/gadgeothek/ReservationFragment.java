@@ -42,6 +42,7 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
             @Override
             public void onCompletion(List<Reservation> input) {
                 for (Reservation reservation:input){
+
                     reservationAdapter.insert(reservation);
                 }
                 reservationAdapter.notifyDataSetChanged();

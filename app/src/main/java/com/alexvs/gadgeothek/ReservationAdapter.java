@@ -84,6 +84,7 @@ public class ReservationAdapter extends RecyclerView.Adapter {
             });
             remove(reservation);
 
+
         }
     }
 
@@ -100,5 +101,6 @@ public class ReservationAdapter extends RecyclerView.Adapter {
         int position = list.indexOf(reservation);
         list.remove(position);
         notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 }

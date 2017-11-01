@@ -20,22 +20,22 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_weight="3"
-        android:layout_margin="@dimen/text_margin"
+        android:layout_margin="12dp"
         android:textAppearance="?attr/textAppearanceListItem"/>
 
     <TextView
         android:id="@+id/loan_pickupDate"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_weight="3"
-        android:layout_margin="@dimen/text_margin"
+        android:layout_weight="4"
+        android:layout_margin="12dp"
         android:textAppearance="?attr/textAppearanceListItem"/>
 
     <TextView
         android:id="@+id/loan_returnDate"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:layout_margin="@dimen/text_margin"
         android:textAppearance="?attr/textAppearanceListItem"/>
 </LinearLayout>

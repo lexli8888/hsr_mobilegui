@@ -6,9 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.alexvs.gadgeothek.domain.Gadget;
 import com.alexvs.gadgeothek.domain.Loan;
+import com.alexvs.gadgeothek.service.LibraryService;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -21,7 +24,9 @@ public class LoanAdapter extends RecyclerView.Adapter {
 
 
     public LoanAdapter() {
-
+        list.add(0, new Loan("1", new Gadget("Buch"), new Date()));
+        list.add(1, new Loan("2", new Gadget("DVD"), new Date()));
+        list.add(2, new Loan("3", new Gadget("GoPro"), new Date()));
     }
 
     @Override
@@ -64,8 +69,8 @@ public class LoanAdapter extends RecyclerView.Adapter {
        public void bindView(int position){
            mTextViewId.setText(list.get(position).getLoanId());
            mTextViewGadget.setText(list.get(position).getGadget().getName());
-           mTextViewPickUpDate.setText(list.get(position).getPickupDate().toString());
-           mTextViewReturnDate.setText(list.get(position).getReturnDate().toString());
+           mTextViewPickUpDate.setText(list.get(position).PickupDate());
+           mTextViewReturnDate.setText(list.get(position).ReturnDate());
 
        }
 

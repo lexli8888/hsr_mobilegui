@@ -1,9 +1,11 @@
 package com.alexvs.gadgeothek;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -19,16 +21,17 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mUrlView = (EditText) findViewById(R.id.url);
-
         setContentView(R.layout.activity_settings);
 
+        mUrlView = (EditText) findViewById(R.id.url);
+        mUrlView.setText(LibraryService.getServerAddress());
         Button mSaveButton = (Button) findViewById(R.id.save_button);
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            SettingService.setString(getApplicationContext(), URL_SETTING_KEY, mUrlView.getText().toString());
+                SettingService.setString(getApplicationContext(), URL_SETTING_KEY, mUrlView.getText().toString());
+                LibraryService.setServerAddress(mUrlView.getText().toString());
+                finish();
             }
         });
 
@@ -62,4 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 }
