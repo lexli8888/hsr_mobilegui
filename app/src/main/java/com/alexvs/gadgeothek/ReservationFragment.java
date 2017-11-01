@@ -41,6 +41,7 @@ public class ReservationFragment extends Fragment implements View.OnClickListene
         LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
             @Override
             public void onCompletion(List<Reservation> input) {
+                System.out.println(input);
                 for (Reservation reservation:input){
 
                     reservationAdapter.insert(reservation);

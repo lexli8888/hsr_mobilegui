@@ -10,8 +10,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/reservationRecyclerView"
         android:name="com.alexvs.gadgeothek.ReservationFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layoutManager="LinearLayoutManager"
         tools:context="com.alexvs.gadgeothek.ReservationFragment"
         tools:listitem="@layout/fragment_reservation"
@@ -25,7 +25,8 @@
         android:layout_marginRight="8dp"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"/>
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginEnd="8dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -37,11 +38,12 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
-        app:fabSize="mini"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.982"
-        app:srcCompat="@android:drawable/ic_menu_add"/>
+        app:layout_constraintVertical_bias="0.903"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        android:layout_marginRight="32dp"/>
 
 </android.support.constraint.ConstraintLayout>

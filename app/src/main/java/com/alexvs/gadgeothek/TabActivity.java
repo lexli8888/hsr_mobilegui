@@ -15,21 +15,17 @@ public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSel
 
     private LoanFragment mLoanFragment;
     private ReservationFragment mReservationFragment;
-
+    private SettingsFragment mSettingsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
 
-
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton3);
-        floatingActionButton.setOnClickListener(this);
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Loan"));
         tabLayout.addTab(tabLayout.newTab().setText("Reservation"));
-        tabLayout.addTab(tabLayout.newTab());
+        tabLayout.addTab(tabLayout.newTab().setText("Einstellungen"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.addOnTabSelectedListener(this);
 
@@ -43,6 +39,7 @@ public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSel
 
         mLoanFragment = new LoanFragment();
         mReservationFragment = new ReservationFragment();
+        mSettingsFragment = new SettingsFragment();
     }
 
 
@@ -73,6 +70,11 @@ public class TabActivity extends AppCompatActivity implements TabLayout.OnTabSel
 
             case 1:
                 transaction.replace(R.id.placeholder, mReservationFragment);
+                transaction.commit();
+                break;
+
+            case 2:
+                transaction.replace(R.id.placeholder, mSettingsFragment);
                 transaction.commit();
                 break;
 

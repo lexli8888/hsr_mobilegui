@@ -12,6 +12,9 @@ import com.alexvs.gadgeothek.service.Callback;
 import com.alexvs.gadgeothek.service.LibraryService;
 import com.alexvs.gadgeothek.service.SettingService;
 
+import static com.alexvs.gadgeothek.LoginActivity.SETTING_EMAIL_KEY;
+import static com.alexvs.gadgeothek.LoginActivity.SETTING_PASSWORD_KEY;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText mStudentNoView;
@@ -22,13 +25,15 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registration);
 
         mStudentNoView = (EditText) findViewById(R.id.studentno);
         mUsernameView = (EditText) findViewById(R.id.username);
-        mEmailView = (EditText) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mEmailView = (EditText) findViewById(R.id.register_email);
+        mPasswordView = (EditText) findViewById(R.id.register_password);
+        mEmailView.setText(SettingService.getString(getApplicationContext(), SETTING_EMAIL_KEY, ""));
+        mPasswordView.setText(SettingService.getString(getApplicationContext(), SETTING_PASSWORD_KEY, ""));
 
-        setContentView(R.layout.activity_registration);
 
         Button mSaveButton = (Button) findViewById(R.id.register_button);
         mSaveButton.setOnClickListener(new View.OnClickListener() {
@@ -46,8 +51,8 @@ public class RegistrationActivity extends AppCompatActivity {
                             LibraryService.login(email, password, new Callback<Boolean>() {
                                 @Override
                                 public void onCompletion(Boolean input) {
-                                    SettingService.setString(getApplicationContext(), LoginActivity.SETTING_EMAIL_KEY, email);
-                                    SettingService.setString(getApplicationContext(), LoginActivity.SETTING_PASSWORD_KEY, password);
+                                    SettingService.setString(getApplicationContext(), SETTING_EMAIL_KEY, email);
+                                    SettingService.setString(getApplicationContext(), SETTING_PASSWORD_KEY, password);
                                     SettingService.setBool(getApplicationContext(), LoginActivity.SETTING_LOGGED_IN_KEY, true);
 
                                     Intent intent = new Intent(getApplicationContext(), TabActivity.class);

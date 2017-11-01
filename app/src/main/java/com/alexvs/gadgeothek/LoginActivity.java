@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     private void loadSettings() {
         SettingService.setBool(getApplicationContext(), SETTING_LOGGED_IN_KEY, false);
 
-        String serverUrl = SettingService.getString(getApplicationContext(), SettingsActivity.URL_SETTING_KEY, "http://mge7.dev.ifs.hsr.ch/public");
+        String serverUrl = SettingService.getString(getApplicationContext(), SettingsFragment.URL_SETTING_KEY, "http://mge7.dev.ifs.hsr.ch/public");
         LibraryService.setServerAddress(serverUrl);
 
         mEmailView.setText(SettingService.getString(getApplicationContext(), SETTING_EMAIL_KEY, ""));
@@ -98,6 +98,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onError(String message) {
                 switch (message) {
                     case "user does not exist":
+                        SettingService.setString(getApplicationContext(), SETTING_EMAIL_KEY, email);
+                        SettingService.setString(getApplicationContext(), SETTING_PASSWORD_KEY, password);
                         Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
                         startActivity(intent);
                         break;
